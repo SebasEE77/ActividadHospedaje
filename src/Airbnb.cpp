@@ -1,7 +1,6 @@
 //
 // Created by sebat on 19/03/2023.
 //
-
 #include "Airbnb.h"
 Airbnb::Airbnb(string nombre): idPropietario(1), nombre(nombre), disponibilidad(disponibilidad) {}
 
@@ -50,18 +49,17 @@ void Airbnb::mostrarInfo() {
     }
 }
 
-void Airbnb::crearReserva(string nombreHuesped,int fechaInicio, int fechaFin){
+void Airbnb::crearReserva(string nombreHuesped,int fechaInicio, int fechaFin) {
     int idReserva;
     hogar *pHogar;
-    cout <<"Escriba el id del propietario para crear la reserva"<<endl;
-    cin>>idReserva;
+    cout << "Escriba el id del propietario para crear la reserva" << endl;
+    cin >> idReserva;
     auto encontrar = mapaHogar.find(idReserva);
-    if(encontrar  != mapaHogar.end()){
-        reservas* pReserva = new reservas(idReserva,nombreHuesped,fechaInicio,fechaFin);
-        this->mapaReservas.insert(make_pair(idReserva,pReserva));
+    if (encontrar != mapaHogar.end()) {
+        reservas *pReserva = new reservas(idReserva, nombreHuesped, fechaInicio, fechaFin);
+        this->mapaReservas.insert(make_pair(idReserva, pReserva));
         cout << "Se creo la reserva" << endl;
     }
-    if(pHogar->getDisponibilidad())
 }
 
 void Airbnb::mostrarInfoReserva() {
@@ -73,6 +71,30 @@ void Airbnb::mostrarInfoReserva() {
         cout << "El ID del propietario es: " << itMap->first << " y el nombre del huesped: " << itMap->second->getNombreHuesped() << endl;
     }
 }
+
+void Airbnb::eliminarReserva() {
+    int num;
+    int numId;
+    cout << "El huesped abandono el hogar?" << endl;
+    cout << "1. Si" << endl;
+    cout << "2. No" << endl;
+    cin >> num;
+    if(num == 1){
+        cout << "Escribe el id del propietario para eliminar la reserva del huesped relacionado" << endl;
+        cin>> numId;
+        auto encontrar = mapaReservas.find(numId);
+        if(encontrar != mapaReservas.end()){
+            mapaReservas.erase(encontrar);
+            cout << "Se elimino la reserva" << endl;
+        }else{
+            cout << "No se encontro ninguna reserva con ese Id" <<endl;
+        }
+    }else{
+        cout << "No liberaste ninguna reserva" << endl;
+    }
+
+}
+
 
 string Airbnb::getNombre(){
     return nombre;

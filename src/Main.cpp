@@ -95,6 +95,7 @@ void mostrarMenu(Airbnb *pAirbnb) {
                 pAirbnb->mostrarInfoReserva();
                 break;
             case 7:
+                pAirbnb->eliminarReserva();
                 break;
             default:
                 break;

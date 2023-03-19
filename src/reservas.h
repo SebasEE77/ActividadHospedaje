@@ -25,6 +25,7 @@ private:
     string nombreHuesped;
     int fechaInicio;
     int fechaFin;
+    int disponibilidad;
 
 public:
     reservas() = default;
