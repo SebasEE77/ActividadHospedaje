@@ -24,4 +24,4 @@ string evaluaciones::getFecha(){
 
 string evaluaciones::getReceptor() {
     return receptor;
-
+}

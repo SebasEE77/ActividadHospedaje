@@ -5,7 +5,7 @@
 #include "propietario.h"
 
 propietario::propietario(int id, string nombre, string sexo,
-                         int fechaNacimiento, float puntaje): id(id),nombre(nombre),sexo(sexo),
+                         string fechaNacimiento, float puntaje): id(id),nombre(nombre),sexo(sexo),
                          fechaNacimiento(fechaNacimiento),puntaje(puntaje) {}
 
 
