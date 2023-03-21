@@ -4,7 +4,7 @@
 
 #include "reservas.h"
 
-reservas::reservas(int idPropietario,string nombreHuesped,int fechaInicio, int fechaFin): idPropietario(idPropietario),
+reservas::reservas(int idPropietario,string nombreHuesped,string fechaInicio, string fechaFin): idPropietario(idPropietario),
 nombreHuesped(nombreHuesped), fechaInicio(fechaInicio), fechaFin(fechaFin) {}
 
 int reservas::getidPropietario(){
@@ -13,9 +13,9 @@ int reservas::getidPropietario(){
 string reservas::getNombreHuesped(){
     return nombreHuesped;
 }
-int reservas::getFechaInicio(){
+string reservas::getFechaInicio(){
     return fechaInicio;
 }
-int reservas::getFechaFin() {
+string reservas::getFechaFin() {
     return fechaFin;
 }

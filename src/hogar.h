@@ -34,6 +34,7 @@ public:
     int getalojarBebes();
     string getdescripcionHogar();
     int getDisponibilidad();
+    void setDisponibilidad(int dispo);
 
 
 

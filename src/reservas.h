@@ -23,18 +23,18 @@ class reservas {
 private:
     int idPropietario;
     string nombreHuesped;
-    int fechaInicio;
-    int fechaFin;
+    string fechaInicio;
+    string fechaFin;
     int disponibilidad;
 
 public:
     reservas() = default;
-    reservas(int idPropietario,string nombreHuesped,int fechaInicio, int fechaFin);
+    reservas(int idPropietario,string nombreHuesped,string fechaInicio, string fechaFin);
 
     int getidPropietario();
     string getNombreHuesped();
-    int getFechaInicio();
-    int getFechaFin();
+    string getFechaInicio();
+    string getFechaFin();
 
 };
 

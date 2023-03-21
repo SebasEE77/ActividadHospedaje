@@ -23,19 +23,19 @@ private:
     int id;
     string nombre;
     string sexo;
-    int fechaNacimiento;
-    int puntaje;
-    vector<huesped*> vectorHuesped;
+    string fechaNacimiento;
+    float puntaje;
 
 public:
     huesped() = default;
-    huesped(int id, string nombre, string sexo, int fechaNacimiento, int puntaje);
+    huesped(int id, string nombre, string sexo, string fechaNacimiento, float puntaje);
 
     string getNombre();
     string getSexo();
     int getId();
-    int getFechaNacimiento();
+    string getFechaNacimiento();
     float getPuntaje();
+    void setPuntaje(float puntaje);
 
 };
 

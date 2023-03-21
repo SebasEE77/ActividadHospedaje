@@ -18,10 +18,13 @@ string propietario::getNombre(){
 string propietario::getSexo(){
     return sexo;
 }
-int propietario::getFechaNacimiento(){
+string propietario::getFechaNacimiento(){
     return fechaNacimiento;
 }
 float propietario::getPuntaje() {
     return puntaje;
 };
 
+void propietario::setPuntaje(float puntaje){
+    this->puntaje = puntaje;
+}

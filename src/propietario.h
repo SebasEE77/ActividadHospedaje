@@ -25,19 +25,20 @@ private:
     int id;
     string nombre;
     string sexo;
-    int fechaNacimiento;
+    string fechaNacimiento;
     float puntaje;
 
 
 public:
     propietario() = default;
-    propietario(int id, string nombre, string sexo, int fechaNacimiento, float puntaje);
+    propietario(int id, string nombre, string sexo, string fechaNacimiento, float puntaje);
 
     int getId();
     string getNombre();
     string getSexo();
-    int getFechaNacimiento();
+    string getFechaNacimiento();
     float getPuntaje();
+    void setPuntaje(float puntaje);
 };
 
 

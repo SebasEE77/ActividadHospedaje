@@ -2,14 +2,14 @@
 #include "Airbnb.h"
 
 void primeraOpcion(Airbnb *Propietario){
-    int fechaNacimiento;
+    string fechaNacimiento;
     float puntaje;
     string nombre,sexo;
     cout << "Escriba su nombre"<<endl;
-    cin >> nombre;
+    getline(cin >> std::ws, nombre);
     cout << "Cual es su genero"<<endl;
     cin >> sexo;
-    cout << "Cual es su fecha de nacimiento"<<endl;
+    cout << "Cual es su fecha de nacimiento en formato dd/mm/aa"<<endl;
     cin >> fechaNacimiento;
     cout << "Cual es su puntaje"<<endl;
     cin >> puntaje;
@@ -17,10 +17,10 @@ void primeraOpcion(Airbnb *Propietario){
 }
 
 void segundaOpcion(Airbnb *Huesped){
-    int fechaNacimiento;
+    string fechaNacimiento;
     float puntaje;
     string nombre,sexo;
-    cout << "Escriba su nombre"<<endl;
+    getline(cin >> std::ws, nombre);
     cin >> nombre;
     cout << "Cual es su genero"<<endl;
     cin >> sexo;
@@ -35,14 +35,14 @@ void terceraOpcion(Airbnb *PropietarioHogar){
     string direccion,descripcionHogar;
     int numCamasDispo, alojarBebes,disponibilidad;
     cout << "Agrege la direccion del lugar"<<endl;
-    cin >> direccion;
+    getline(cin >> std::ws, direccion);
     cout << "Agrege el numero de camas disponibles"<<endl;
     cin >> numCamasDispo;
     cout << "Es posible alojar bebes?"<<endl;
     cout << "1. Si"<<endl;cout << "2. No"<<endl;
     cin >> alojarBebes;
     cout << "Ponga una descripcion del lugar"<<endl;
-    cin >> descripcionHogar;
+    getline(cin >> std::ws, descripcionHogar);
     cout << "Ponga la disponibilidad del hogar"<<endl;
     cout << "1. Disponible"<<endl;cout << "2. No disponible"<<endl;
     cin >> disponibilidad;
@@ -51,14 +51,49 @@ void terceraOpcion(Airbnb *PropietarioHogar){
 
 void quintaOpcion(Airbnb *crearReserva){
     string nombreHuesped;
-    int fechaInicio, fechaFin;
+    string fechaInicio, fechaFin;
     cout << "Escriba su nombre como Huesped"<<endl;
-    cin >> nombreHuesped;
-    cout << "Cual es la feha de inicio de su estadia"<<endl;
+    getline(cin >> std::ws, nombreHuesped);
+    cout << "Cual es la feha de inicio de su estadia en formato dd/mm/aa"<<endl;
     cin >> fechaInicio;
-    cout << "Hasta que dia es su estadia"<<endl;
+    cout << "Hasta que dia es su estadia en formato dd/mm/aa"<<endl;
     cin >> fechaFin;
     crearReserva->crearReserva(nombreHuesped,fechaInicio,fechaFin);
+}
+
+void OctavaOpcion(Airbnb *evaluaciones){
+    string emisor, receptor, fecha, tipo;
+    string comentario = "Ninguno";
+    int calificacion = -1;
+    int opcion, id;
+    cout << "La evaluacion es para un huesped o propietario?:" << endl;
+    cin >> tipo;
+    cout << "Indique el nombre de la persona a quien va dirigida la evaluacion:" << endl;
+    getline(cin >> std::ws, receptor);
+    cout << "Indique su nombre:" << endl;
+    getline(cin >> std::ws, emisor);
+    cout << "Indique su id:" << endl;
+    cin >> id;
+    cout << "Indique del 1 al 5, la calificacion:" << endl;
+    do{
+        cin >> calificacion;
+        if(calificacion < 1 || calificacion > 5){
+            cout << "Ingrese de nuevo la calificacion:" << endl;
+        }
+
+    }while(calificacion < 1 || calificacion > 5);
+    cout << "Tiene comentarios al respecto?" << endl;
+    cout << "1. Si\n" << "2.No\n" << endl;
+    cin >> opcion;
+    if (opcion == 1){
+        cout << "Ingrese su comentario:" << endl;
+        getline(cin >> std::ws, comentario);
+    }
+    cout << "Coloque la fecha en la que realiza la evualuacion en formato dd/mm/aa:"<<endl;
+    cin >> fecha;
+    if(evaluaciones->cambiarCalificacionPersona(id, receptor,calificacion,tipo) == 1) {
+        evaluaciones->agregarEvaluacion(calificacion, fecha, emisor, receptor, comentario);
+    }
 }
 
 void mostrarMenu(Airbnb *pAirbnb) {
@@ -73,6 +108,8 @@ void mostrarMenu(Airbnb *pAirbnb) {
         cout << "5. Crear Reserva\n";
         cout << "6. Mostrar Reservas\n";
         cout << "7. Liberar Reservas\n";
+        cout << "8. Agregar evaluacion\n";
+        cout << "9. Mostrar evaluacion\n";
         cout << "0. Salir\n" << endl;
         cin >> opc;
         switch (opc) {
@@ -97,7 +134,14 @@ void mostrarMenu(Airbnb *pAirbnb) {
             case 7:
                 pAirbnb->eliminarReserva();
                 break;
+            case 8:
+                OctavaOpcion(pAirbnb);
+                break;
+            case 9:
+                pAirbnb->mostrarEvaluaciones();
+                break;
             default:
+                cout << "Opcion incorrecta" << endl;
                 break;
         }
     } while (opc != 0);

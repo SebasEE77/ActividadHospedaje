@@ -1,4 +1,4 @@
-file(GLOB_RECURSE SOURCES propietario.h propietario.cpp huesped.h huesped.cpp hogar.h hogar.cpp reservas.cpp reservas.h Airbnb.cpp Airbnb.h evaluacion.cpp evaluacion.h)  #Todas las fuentes sin el Main
+file(GLOB_RECURSE SOURCES propietario.h propietario.cpp huesped.h huesped.cpp hogar.h hogar.cpp reservas.cpp reservas.h Airbnb.cpp Airbnb.h evaluaciones.cpp evaluaciones.h)  #Todas las fuentes sin el Main
 
 set(BINARY ${CMAKE_PROJECT_NAME})  # El nombre va a a estar en el CMake principal
 

@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include "reservas.h"
-#include "evaluacion.h"
+#include "evaluaciones.h"
 
 
 using std::cout;
@@ -31,7 +31,7 @@ class Airbnb {
     unordered_map<int, reservas*> mapaReservas;
     vector<propietario*> vectorPropietario;
     vector<huesped*> vectorHuesped;
-    vector<evaluacion*>vectorEvaluacion;
+    vector<evaluaciones*>vectorEvaluacion;
 
 
 public:
@@ -39,14 +39,16 @@ public:
     Airbnb(string nombre);
     void agregarInfoHogar(string direccion, int numCamasDispo, int alojarBebes, string descripcionHogar, int disponibilidad);
     void mostrarInfo();
-    void agregarPropietario(string nombre, string sexo, int fechaNacimiento, float puntaje);
-    void agregarHuesped(string nombre, string sexo, int fechaNacimiento, float puntaje);
-    void crearReserva(string nombreHuesped,int fechaInicio, int fechaFin);
+    void agregarPropietario(string nombre, string sexo, string fechaNacimiento, float puntaje);
+    void agregarHuesped(string nombre, string sexo, string fechaNacimiento, float puntaje);
+    void crearReserva(string nombreHuesped,string fechaInicio, string fechaFin);
     void mostrarInfoReserva();
     void eliminarReserva();
+    void mostrarEvaluaciones();
+    int cambiarCalificacionPersona(int id, string nombre, int calificacion, string tipo);
+    void agregarEvaluacion(int calificacion, string fecha, string emisor, string receptor, string comentario);
 
     string getNombre();
-
 };
 
 

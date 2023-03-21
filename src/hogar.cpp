@@ -24,3 +24,7 @@ string hogar::getdescripcionHogar() {
 int hogar::getDisponibilidad(){
     return disponibilidad;
 }
+
+void hogar::setDisponibilidad(int dispo) {
+    this->disponibilidad = dispo;
+}
